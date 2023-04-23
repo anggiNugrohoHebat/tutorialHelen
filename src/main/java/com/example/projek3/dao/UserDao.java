@@ -1,5 +1,7 @@
 package com.example.projek3.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -52,12 +54,6 @@ public class UserDao {
 
     }
 
-    public List<User> semuaUserv2() {
-        List<User> semuaUser;
-        semuaUser = jdbcTemplate.query("SELECT * FROM projek3.tabel_user",
-                BeanPropertyRowMapper.newInstance(User.class));
-        return semuaUser;
 
-    }
 
 }
