@@ -43,4 +43,16 @@ public class UserController {
         }
     }
 
+    
+    @GetMapping("getUserById")
+    public String getByUserId(@PathVariable("id") Integer id) {
+        try{
+            String rows = userDao.getByUserId(id);
+            return "id adalah: " + rows;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return "tidak Ditemukan: " + e.getMessage();
+        }
+    }
+
 }
