@@ -25,6 +25,7 @@ public class ProductController {
     @PostMapping("/save")
     public String save(@RequestBody Product product) {
         try {
+            System.out.println("masuk controller save");
             int rows = productDao.save(product);
             return "anda telah menyimpan product sebesar: " +rows+" rpw+";
         } catch (Exception e) {
