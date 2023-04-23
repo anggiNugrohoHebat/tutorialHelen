@@ -1,5 +1,7 @@
 package com.example.projek3.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,16 +45,27 @@ public class UserController {
         }
     }
 
-    
     @GetMapping("getUserById")
     public String getByUserId(@PathVariable("id") Integer id) {
-        try{
+        try {
             String rows = userDao.getByUserId(id);
             return "id adalah: " + rows;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return "tidak Ditemukan: " + e.getMessage();
         }
+    }
+
+    public List<User> getSemuaUser(@RequestBody User user) {
+        try {
+            LIst<User> getSemuaUser;
+            getSemuaUser = userDao.query();
+            return "semua user adalah: " + rows;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+
     }
 
 }
