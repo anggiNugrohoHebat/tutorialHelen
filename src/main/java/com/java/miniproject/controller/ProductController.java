@@ -41,6 +41,18 @@ public class ProductController {
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        // ini adalah kodingan hellen
+    }
+
+    @GetMapping("/selectbyidv2/{id}")
+    public ResponseEntity<Product> selectByUserIdV2(@PathVariable("id") Integer id) {
+        try {
+            Product product = productDao.selectById(id);
+            return new ResponseEntity<>(product, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        // ini adalah kodingan hellen
     }
 
 }
