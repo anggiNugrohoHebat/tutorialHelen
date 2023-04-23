@@ -28,6 +28,4 @@ public class ProdukController {
             return "gagal disimpan: " + e.getMessage();
         }
     }
-
-    
 }
