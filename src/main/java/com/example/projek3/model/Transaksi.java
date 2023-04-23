@@ -42,5 +42,4 @@ public class Transaksi {
     public String toString() {
         return "Transaksi [id=" + id + ", userId=" + userId + ", produkId=" + produkId + "]";
     }
-
 }

@@ -4,7 +4,7 @@ public class Produk {
     private int id;
     private Integer namaProduk;
     private Integer harga;
-    
+
     public Produk() {
     }
 
@@ -43,12 +43,4 @@ public class Produk {
         return "Produk [id=" + id + ", namaProduk=" + namaProduk + ", harga=" + harga + "]";
     }
 
-
-
-    
-
-
-
-    
-    
 }
