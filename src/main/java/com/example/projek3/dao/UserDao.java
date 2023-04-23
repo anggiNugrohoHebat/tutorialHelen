@@ -37,6 +37,19 @@ public class UserDao {
         }
     }
 
-   
+    public User getByUserId(Integer id) {
+        User user;
+        user = jdbcTemplate.queryForObject("SELECT * FROM projek3.tabel_user Where id=?",
+                BeanPropertyRowMapper.newInstance(User.class), id);
+        return user;
+    }
+
+    public List<User> semuaUser() {
+        List<User> semuaUser;
+        semuaUser = jdbcTemplate.query("SELECT * FROM projek3.tabel_user",
+                BeanPropertyRowMapper.newInstance(User.class));
+        return semuaUser;
+
+    }
 
 }
