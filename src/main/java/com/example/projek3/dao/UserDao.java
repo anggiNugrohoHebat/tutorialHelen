@@ -52,4 +52,12 @@ public class UserDao {
 
     }
 
+    public List<User> semuaUserv2() {
+        List<User> semuaUser;
+        semuaUser = jdbcTemplate.query("SELECT * FROM projek3.tabel_user",
+                BeanPropertyRowMapper.newInstance(User.class));
+        return semuaUser;
+
+    }
+
 }
