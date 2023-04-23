@@ -23,5 +23,17 @@ public class ProdukDao {
             return "gagal di simpan: " + e.getMessage();
         }
     }
-    
+
+    public String getByProdukId(Integer id) {
+        try {
+            String rows = jdbcTemplate.getByProdukId(
+                "SELECT + FROM projek3.tabel_produk WHERE id= ?",
+                new Object[] {id});
+                return "berhasil: " + rows;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return "gagal: " + e.getMessage();
+        }
+    }
+
 }
