@@ -30,14 +30,23 @@ public class TransaksiController {
     UserDao userDao;
 
     @PostMapping("beli")
-    public String save (@RequestBody Transaksi transaksi) {
+    public String save(@RequestBody Transaksi transaksi) {
         try {
             int rows = transaksiDao.save(transaksi);
             if (rows >= 1) {
                 User user = userDao.getByUserId(transaksi.getUserId());
-                Produk produk = produkDao.get
+                Produk produk = produkDao.getByProdukId(transaksi.getByProdukId);
+                int rowterupdate = userDao.updateSaldoByUserId(user.getId(), user.getSaldo() - produk.getHarga());
+
+                return "transaksi berhasil disimpan: " + rows;
             }
+
+            return "transaksi tidak bisa: " + rows;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "gagal: " + e.getMessage();
         }
+
     }
-    
+
 }
