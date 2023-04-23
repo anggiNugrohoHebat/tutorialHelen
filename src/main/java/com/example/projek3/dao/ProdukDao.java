@@ -36,4 +36,11 @@ public class ProdukDao {
         }
     }
 
+    public Produk selectById(Integer id) {
+        Produk produk = null;
+        produk = jdbcTemplate.queryForObject("select * from tabel_produk where id = ?",
+                BeanPropertyRowMapper.newInstance(Produk.class), id);
+        return produk;
+    }
+
 }
