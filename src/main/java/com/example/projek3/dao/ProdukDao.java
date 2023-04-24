@@ -15,10 +15,10 @@ public class ProdukDao {
     public String save(Produk produk) {
         try {
             int rows = jdbcTemplate.update(
-                "INSERT INTO projek3.tabel_produk (id, namaProduk, harga) VALUES (?, ?, ?)",
-                new Object[] {produk.getId(), produk.getNamaProduk(), produk.getHarga()});
-                return "berhasil di simpan: ";  
-        }catch (Exception e) {
+                    "INSERT INTO projek3.tabel_produk (id, namaProduk, harga) VALUES (?, ?, ?)",
+                    new Object[] { produk.getId(), produk.getNamaProduk(), produk.getHarga() });
+            return "berhasil di simpan: ";
+        } catch (Exception e) {
             e.printStackTrace();
             return "gagal di simpan: " + e.getMessage();
         }
@@ -27,10 +27,10 @@ public class ProdukDao {
     public String getByProdukId(Integer id) {
         try {
             String rows = jdbcTemplate.getByProdukId(
-                "SELECT + FROM projek3.tabel_produk WHERE id= ?",
-                new Object[] {id});
-                return "berhasil: " + rows;
-        }catch (Exception e) {
+                    "SELECT + FROM projek3.tabel_produk WHERE id= ?",
+                    new Object[] { id });
+            return "berhasil: " + rows;
+        } catch (Exception e) {
             e.printStackTrace();
             return "gagal: " + e.getMessage();
         }
@@ -38,21 +38,19 @@ public class ProdukDao {
 
     public Produk selectById(Integer id) {
         Produk produk = null;
-        produk = jdbcTemplate.queryForObject("select * from tabel_produk where id = ?",
+        produk = jdbcTemplate.queryForObject("select * from projek3.tabel_produk where id = ?",
                 BeanPropertyRowMapper.newInstance(Produk.class), id);
         return produk;
     }
 
-    public String daletById(Integer id) {
+    public String hapus(Integer id) {
         try {
-            int rows = jdbcTemplate.daletById(
-                "DELET * FROM projek3.tabel_produk WHERE id= ?",
-                new Object[] {id});
-                return "berhasil dihapus" + rows;
-        }catch (Exception e) {
+            int rows = jdbcTemplate.hapus(
+                    "DELETE * FROM projek3.tabel_produk WHERE id= ?");
+            return "berhasil dihapus" + rows;
+        } catch (Exception e) {
             e.printStackTrace();
             return "gagal dihapus: " + e.getMessage();
         }
     }
-
 }
