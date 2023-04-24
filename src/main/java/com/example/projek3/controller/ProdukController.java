@@ -2,6 +2,8 @@ package com.example.projek3.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,9 +47,7 @@ public class ProdukController {
     @GetMapping("hapus")
     public String hapusByid(@PathVariable("id") Integer id) {
         try {
-            int rows = produkDao.update(
-                    "DELETE * FROM projek3.tabel_produk WHERE id= ?",
-                    new Object[] { id });
+            String rows = produkDao.hapus(id);
             return "berhasil dihapus: " + rows;
         } catch (Exception e) {
             e.printStackTrace();
