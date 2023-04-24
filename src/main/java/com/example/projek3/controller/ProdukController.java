@@ -28,4 +28,19 @@ public class ProdukController {
             return "gagal disimpan: " + e.getMessage();
         }
     }
+
+    @GetMapping("getById")
+    public String getProdukById(Integer id) {
+        try {
+            int rows = produkDao.getByProdukId(
+                "SELECT * FROM projek3.tabel_produk WHERE id= ?",
+                new Object[] {id});
+                return "produk adalah: " + rows;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return "produk tidak diketahui: " + e.getMessage();
+        }
+    }
+
+    
 }
