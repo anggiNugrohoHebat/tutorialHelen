@@ -43,4 +43,16 @@ public class ProdukDao {
         return produk;
     }
 
+    public String daletById(Integer id) {
+        try {
+            int rows = jdbcTemplate.daletById(
+                "DELET * FROM projek3.tabel_produk WHERE id= ?",
+                new Object[] {id});
+                return "berhasil dihapus" + rows;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return "gagal dihapus: " + e.getMessage();
+        }
+    }
+
 }
