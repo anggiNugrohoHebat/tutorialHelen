@@ -23,24 +23,35 @@ public class ProdukController {
         try {
             String rows = produkDao.save(produk);
             return "berhasil di simpan: " + rows;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return "gagal disimpan: " + e.getMessage();
         }
     }
 
     @GetMapping("getById")
-    public String getProdukById(Integer id) {
+    public String getProdukById(@PathVariable("id") Integer id) {
         try {
             int rows = produkDao.getByProdukId(
-                "SELECT * FROM projek3.tabel_produk WHERE id= ?",
-                new Object[] {id});
-                return "produk adalah: " + rows;
-        }catch (Exception e) {
+                    "SELECT * FROM projek3.tabel_produk WHERE id= ?",
+                    new Object[] { id });
+            return "produk adalah: " + rows;
+        } catch (Exception e) {
             e.printStackTrace();
             return "produk tidak diketahui: " + e.getMessage();
         }
     }
 
-    
+    @GetMapping("hapus")
+    public String hapusByid(@PathVariable("id") Integer id) {
+        try {
+            int rows = produkDao.update(
+                    "DELETE * FROM projek3.tabel_produk WHERE id= ?",
+                    new Object[] { id });
+            return "berhasil dihapus: " + rows;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "gagal di hapus: " + e.getMessage();
+        }
+    }
 }
