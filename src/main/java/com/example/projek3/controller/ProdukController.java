@@ -1,6 +1,7 @@
 package com.example.projek3.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,9 @@ public class ProdukController {
     @Autowired
     ProdukDao produkDao;
 
+    @Autowired 
+    JdbcTemplate jdbcTemplate;
+
     @PostMapping("save")
     public String saveProduk(@RequestBody Produk produk) {
         try {
@@ -31,18 +35,16 @@ public class ProdukController {
         }
     }
 
-    @GetMapping("getById")
-    public String getProdukById(@PathVariable("id") Integer id) {
+    @GetMapping("selecProdukBy/ {id}")
+    public String selectById(@PathVariable("id") Integer id) {
         try {
-            int rows = produkDao.getByProdukId(
-                    "SELECT * FROM projek3.tabel_produk WHERE id= ?",
-                    new Object[] { id });
-            return "produk adalah: " + rows;
-        } catch (Exception e) {
+            Produk produk = produkDao.selectById(id);
+            return produk + "berhasil di ubah: ";
+        }catch (Exception e) {
             e.printStackTrace();
-            return "produk tidak diketahui: " + e.getMessage();
+            return "gagal di ubah: " + e.getMessage();
         }
-    }
+     
 
     @GetMapping("hapus")
     public String hapusByid(@PathVariable("id") Integer id) {
