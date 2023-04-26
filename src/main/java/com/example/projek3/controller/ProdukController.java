@@ -44,6 +44,7 @@ public class ProdukController {
             e.printStackTrace();
             return "gagal di ubah: " + e.getMessage();
         }
+    }
      
 
     @GetMapping("hapus")
