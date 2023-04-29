@@ -24,9 +24,7 @@ public class UserDao {
         }catch (Exception e) {
             e.printStackTrace();
             return 0;
-
         }
-        
     }
 
     public String save(User user) {
@@ -53,7 +51,5 @@ public class UserDao {
         semuaUser = jdbcTemplate.query("SELECT * FROM projek3.tabel_user",
                 BeanPropertyRowMapper.newInstance(User.class));
         return semuaUser;
-
     }
-
 }
