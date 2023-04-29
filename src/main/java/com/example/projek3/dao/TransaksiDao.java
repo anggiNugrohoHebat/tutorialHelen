@@ -12,15 +12,15 @@ public class TransaksiDao {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public String save(Transaksi transaksi) {
+    public Integer save(Transaksi transaksi) {
         try {
             int rows = jdbcTemplate.update(
                 "UPDATE * FROM projek3.tabel_transaksi (id, userId, produkId) VALUES (?,?,?)",
                 new Object[] {transaksi.getId(), transaksi.getUserId(), transaksi.getProdukId()});
-                return "berhasil di update: " + rows;
+                return rows;
         }catch (Exception e) {
             e.printStackTrace();
-            return "gagal di update: ";
+            return null;
         }
     }
 }
