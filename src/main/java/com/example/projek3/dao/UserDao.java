@@ -21,9 +21,12 @@ public class UserDao {
                     "UPDATE FROM projek3.tabel_user SET saldo=? WHERE id= ?",
                     new Object[] { saldo, id });
             return null;
+        }catch (Exception e) {
             e.printStackTrace();
-            return "tidak berhasil diupdate: " + e.getMessage();
+            return 0;
+
         }
+        
     }
 
     public String save(User user) {
