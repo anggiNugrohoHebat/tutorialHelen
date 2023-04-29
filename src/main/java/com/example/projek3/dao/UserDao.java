@@ -15,13 +15,12 @@ public class UserDao {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public String updateUser(Integer saldo, Integer id) {
+    public Integer updateUser(Integer saldo, Integer id) {
         try {
             int rows = jdbcTemplate.update(
                     "UPDATE FROM projek3.tabel_user SET saldo=? WHERE id= ?",
                     new Object[] { saldo, id });
-            return "berhasil diupdate: " + rows;
-        } catch (Exception e) {
+            return null;
             e.printStackTrace();
             return "tidak berhasil diupdate: " + e.getMessage();
         }
