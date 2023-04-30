@@ -45,7 +45,6 @@ public class ProdukController {
             return "gagal di ubah: " + e.getMessage();
         }
     }
-     
 
     @GetMapping("hapus")
     public String hapusByid(@PathVariable("id") Integer id) {
