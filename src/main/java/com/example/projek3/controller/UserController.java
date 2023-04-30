@@ -27,7 +27,7 @@ public class UserController {
     public String updateUser(@PathVariable("id") Integer id,
             @PathVariable("saldo") Integer saldo) {
         try {
-            String rows = userDao.updateUser(saldo, id);
+            int rows = userDao.updateUser(saldo, id);
             return "berhasil Diupdate: " + rows;
         } catch (Exception e) {
             e.printStackTrace();
