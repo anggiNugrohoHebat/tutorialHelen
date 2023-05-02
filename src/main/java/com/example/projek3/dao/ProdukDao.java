@@ -16,16 +16,12 @@ public class ProdukDao {
     @Autowired
     ProdukDao produkDao;
 
-    public String save(Produk produk) {
-        try {
-            int rows = jdbcTemplate.update(
-                    "INSERT INTO projek3.tabel_produk (id, namaProduk, harga) VALUES (?, ?, ?)",
-                    new Object[] { produk.getId(), produk.getNamaProduk(), produk.getHarga() });
-            return "berhasil di simpan: " + rows;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "gagal di simpan: " + e.getMessage();
-        }
+    public int save(Produk produk) {
+        int rows = jdbcTemplate.update(
+            "UPDATE FROM projek3.tabel_produk (id, nama_produk, harga) VALUES (?, ?, ?)",
+            new Object[] {produk.getId(), produk.getNamaProduk(), produk.getHarga()});
+        return rows;
+        
     }
 
     public Produk selectById(Integer id) {
