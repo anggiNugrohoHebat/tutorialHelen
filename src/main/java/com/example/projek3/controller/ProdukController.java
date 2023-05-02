@@ -27,7 +27,7 @@ public class ProdukController {
     @PostMapping("save")
     public String saveProduk(@RequestBody Produk produk) {
         try {
-            String rows = produkDao.save(produk);
+            int rows = produkDao.save(produk);
             return "berhasil di simpan: " + rows;
         } catch (Exception e) {
             e.printStackTrace();
